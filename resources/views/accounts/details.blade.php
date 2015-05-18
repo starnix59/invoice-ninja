@@ -18,10 +18,10 @@
 
 	{{ Former::populate($account) }}
 	@if ($showUser)
-		{{ Former::populateField('first_name', $account->users()->first()->first_name) }}
-		{{ Former::populateField('last_name', $account->users()->first()->last_name) }}
-		{{ Former::populateField('email', $account->users()->first()->email) }}	
-		{{ Former::populateField('phone', $account->users()->first()->phone) }}
+		{{ Former::populateField('first_name', Auth::user()->first_name) }}
+                {{ Former::populateField('last_name', Auth::user()->last_name) }}
+                {{ Former::populateField('email', Auth::user()->email) }}
+                {{ Former::populateField('phone', Auth::user()->phone) }}
 	@endif
 	
 	<div class="row">

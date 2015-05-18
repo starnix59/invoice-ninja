@@ -151,7 +151,7 @@ class AccountController extends BaseController
                 'datetimeFormats' => Cache::get('datetimeFormats'),
                 'currencies' => Cache::get('currencies'),
                 'languages' => Cache::get('languages'),
-                'showUser' => Auth::user()->id === Auth::user()->account->users()->first()->id,
+                'showUser' => true,//Auth::user()->id === Auth::user()->account->users()->first()->id,
             ];
 
             return View::make('accounts.details', $data);
@@ -568,7 +568,7 @@ class AccountController extends BaseController
             'name' => 'required',
         );
 
-        $user = Auth::user()->account->users()->first();
+        $user = Auth::user();
 
         if (Auth::user()->id === $user->id) {
             $rules['email'] = 'email|required|unique:users,email,'.$user->id.',id';
